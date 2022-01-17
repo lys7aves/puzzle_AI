@@ -1,0 +1,11 @@
+function main(fileName, p, sig_f, sig_n, l, t)
+
+data = loadData(fileName);
+data = modifyData(data);
+
+AR = AutoregressiveModel(data(), p, t);
+GP = GaussianProcess(data(1:250), sig_f, sig_n, l, t);
+
+plot(275:size(AR,1), AR, 'r--', 1:size(GP,1), GP, 'b--', 1:size(data,1), data, '-');
+
+end
